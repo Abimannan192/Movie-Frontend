@@ -1,0 +1,63 @@
+<div class="container mt-10 bg-light">
+    <div class="row justify-content-center mt-4 mb-4">
+        <div class="col-md-6 mt-6">
+            <div class="card shadow-lg p-5 mt-10 mb-10 card">
+                <h1 style="text-align: center; justify-content: center;">Register</h1>
+                
+                <div [ngClass]="className" role="alert">
+                    {{message}} <a routerLink="/login" style="cursor: pointer;">Login Here</a>
+                </div>
+
+                <form [formGroup] = "registerForm" (ngSubmit)="register()">
+                    <div class="mb-3 form-group">
+                        <label for="name" class="form-label" >First Name</label>
+                        <input type="text" placeholder="Enter Your Full Name" formControlName="fullName" [ngClass]="{'is-invalid': submitted && registerForm.controls['fullName'].errors}" class="form-control" id="fullName">
+                        <div *ngIf="submitted && registerForm.controls['fullName'].errors" class="text-danger">
+                            <div *ngIf="submitted && registerForm.controls['fullName'].errors['required']">
+                                Full Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="name" class="form-label" >Last Name</label>
+                        <input type="text" placeholder="Enter Your Last Name" formControlName="fullName" [ngClass]="{'is-invalid': submitted && registerForm.controls['fullName'].errors}" class="form-control" id="fullName">
+                        <div *ngIf="submitted && registerForm.controls['fullName'].errors" class="text-danger">
+                            <div *ngIf="submitted && registerForm.controls['fullName'].errors['required']">
+                                last Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" placeholder="Enter Your Email address" formControlName="email" [ngClass]="{'is-invalid': submitted && registerForm.controls['email'].errors}" class="form-control" id="email" aria-describedby="emailHelp">
+                        <div *ngIf="submitted && registerForm.controls['email'].errors" class="text-danger">
+                            <div *ngIf="submitted && registerForm.controls['email'].errors['required']">
+                                Email is required
+                            </div>
+                            <div *ngIf="submitted && registerForm.controls['email'].errors['email']">
+                                Please writer a valid email
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" placeholder="Enter Your Password" formControlName="pswd" [ngClass]="{'is-invalid': submitted && registerForm.controls['pswd'].errors}" class="form-control" id="pswd">
+                        <div *ngIf="submitted && registerForm.controls['pswd'].errors" class="text-danger">
+                            <div *ngIf="submitted && registerForm.controls['pswd'].errors['required']">
+                                Password is required
+                            </div>
+                            <div *ngIf="submitted && registerForm.controls['pswd'].errors['minlength']">
+                                Password Should be atleast 4 Charactors
+                            </div>
+                            <div *ngIf="submitted && registerForm.controls['pswd'].errors['maxlength']">
+                                Password Should not be more than 8 Charactors
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-dark" style="margin-left: 40%;">Register</button>
+                    <p style="text-align: center;">Already have an account? <a routerLink="/login">Login here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

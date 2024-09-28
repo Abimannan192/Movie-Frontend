@@ -1,0 +1,16 @@
+<h4>Your Bookings</h4>
+<div *ngFor="let booking of bookings" class="bookingInfoDivElement">
+    <div>
+        <strong>Movie: </strong> {{ booking.movieTitle }}
+    </div>
+    <div>
+        <strong>Show Time:</strong> {{ booking.showTime }}
+    </div>
+    <div>
+        <strong>No. of Tickets:</strong> {{ booking.noOfTickets }}
+    </div>
+    <div>
+        <strong>Seats:</strong> {{ booking.seats}}
+    </div>
+    <!-- Add more fields as needed -->
+</div>

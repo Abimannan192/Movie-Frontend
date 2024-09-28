@@ -1,0 +1,58 @@
+<div class="container-fluid p-0 m-0 bg-light mt-2">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" *ngIf="latestMoviesData">
+
+    <div class="row mt-0 pt-2 px-2 text-white" style="background-color: rgb(0, 0, 0);">
+      <h2>Now Playing Movies</h2>
+      <p>Book Your Tickets now!</p>
+      <div class="t col-md-3 mt-3" *ngFor="let movies of NowPlayingMoviesData?.results; let i=index">
+        <div class="card bg-light" *ngIf="i<8" style="min-height: 580px;">
+          <img src="{{ movies.backdrop_path }}" class="card-img-top" alt="images" />
+
+          <div class="card-body">
+            <h5 class="card-title text-dark">{{movies.title}}</h5>
+            <p><i><b><span class="text-dark">Overview:</span></b></i><i>{{ movies.overview.length > 100 ? (movies.overview |
+              slice:0:100) + '...' : movies.overview }}</i></p> 
+            <p><b><span class="text-dark">Release Date:</span> </b><span class="p-1"
+                style="background-color: azure;">{{movies.release_date}}</span></p>
+            <p><b><span class="text-dark" style="background-color: azure;">Rating</span>:</b> {{movies.vote_average}}/10</p>
+            <p><b><span class="text-dark">Language:</span> </b> <span class="p-1"
+                style="background-color: azure;">English</span></p>
+            <button class="btn text-white btn-dark" (click)="redirectToTicketBooking(movies)">Book Ticket</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3 pt-2 px-2 text-white" style="background-color: rgb(0, 0, 0);">
+      <h2>Trending Movies</h2>
+      <div class="t col-md-3 mt-3" *ngFor="let movies of TrendingMoviesData?.results; let i=index">
+        <div class="card bg-light" *ngIf="i<4" style="min-height: 520px;">
+          <img src="{{ movies.backdrop_path }}" class="card-img-top" alt="images" />
+          <div class="card-body">
+            <h5 class="card-title text-dark"><i>{{ movies.title.length > 21 ? (movies.title.slice(0,21)) : movies.title }}</i></h5>
+            <p><i><b><span class="text-dark">Overview:</span></b></i><i>{{ movies.overview.length > 80 ? (movies.overview |
+              slice:0:80) + '...' : movies.overview }}</i></p> 
+            <p><b><span class="text-dark">Release Date:</span> </b><span class="p-1"
+                style="background-color: azure;">{{movies.release_date}}</span></p>
+            <p><b><span class="text-dark" style="background-color: azure;">Rating</span>:</b> {{movies.vote_average}}/10</p>
+            <p><b><span class="text-dark">Language:</span> </b> <span class="p-1"
+                style="background-color: azure;">English</span></p>
+            <button class="btn text-white btn-dark" (click)="redirectToTicketBooking(movies)">Book Ticket</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3 pt-2 px-2 text-white" style="background-color: rgb(0, 0, 0);">
+      <h2>Upcoming Movies</h2>
+      <div class="t col-md-3 mt-3" *ngFor="let movies of UpcomingMoviesData?.results; let i=index">
+        <div class="card bg-light" *ngIf="i<4" style="min-height: 440px;">
+          <img src="{{ movies.backdrop_path }}" class="card-img-top" alt="images" />
+          <div class="card-body" style="height: auto;">
+            <h5 class="card-title text-dark">{{movies.title}}</h5>
+            <p><span class="text-dark">Overview: </span><i>{{ movies.overview.length > 100 ? (movies.overview |
+                slice:0:100) + '...' : movies.overview }}</i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

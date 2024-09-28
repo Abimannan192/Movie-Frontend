@@ -1,0 +1,166 @@
+    <h1>Ticket Booking</h1>
+    <div class="container1">
+     <div class="container">
+      <div class="column1">
+        <form [formGroup]="ticketBookingForm" (ngSubmit)="bookingFunction()">
+          <div [ngClass]="className" role="alert">
+            {{ message }} <a routerLink="/login" style="cursor: pointer;"></a>
+          </div>
+            <p>{{email}}</p>
+            <h2 name="title" class="card-title text-white">Movie: {{ movieTitle }}</h2>
+            <img [src]="movieImage" class="card-img-top" alt="images"/>
+            <label>Overview:</label> <br>
+            <p name="overview">{{ movieOverview }}</p>
+            <label>Show Timings:</label><br>
+            <div class="time">09:00AM</div>
+            <div class="time">12:00PM</div>
+            <div class="time">04:00PM</div>
+            <div class="time">10:30PM</div>
+            <br>
+            <hr>
+            <label>Select a show time: </label>
+            <select formControlName="showTime" name="tickets" id="showTime" [ngClass]="{'is-invalid': submitted && ticketBookingForm.controls['showTime'].errors}">
+                <option value="09:00AM">09:00AM</option>
+                <option value="12:00AM">12:00PM</option>
+                <option value="04:00AM">04:00PM</option>
+                <option value="10:30AM">10:30PM</option>
+            </select><br>
+            <div *ngIf="submitted && ticketBookingForm.controls['showTime'].errors" class="text-danger">
+                <div *ngIf="submitted && ticketBookingForm.controls['showTime'].errors['required']">
+                    Select a show timing
+                </div>
+             </div>
+            <label>Number of Tickets:</label> <select formControlName="noOfTickets" name="tickets" id="tickets" (change)="ticketSelectedChange($event)" [ngClass]="{'is-invalid': submitted && ticketBookingForm.controls['noOfTickets'].errors}">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select><br>
+            <div *ngIf="submitted && ticketBookingForm.controls['noOfTickets'].errors" class="text-danger">
+                <div *ngIf="submitted && ticketBookingForm.controls['noOfTickets'].errors['required']">
+                    Choose no. of tickets
+                </div>
+             </div>
+            <label>Ticket Price: </label><span>$20/Ticket</span><br>
+            <label>Seat Number: </label><span id="text"></span><br>
+           
+            <label style="color: white; background-color: blue; font-size: 25px; padding: 5px;">Total Ticket Price: $ <b><span id="total" style="font-size: 25px;"></span></b></label><br> 
+            
+        
+            <button class="btn btn-success">Proceed To Pay</button>
+            
+            
+            </form>
+        </div>
+        <div class="column2">
+            <label>Select Seat Number: </label>
+            <ul class="showcase">
+                <li>
+                    <div class="seat"></div>
+                    <small>Not Selected</small>
+                </li>
+                <li>
+                    <div class="seat Selected"></div>
+                    <small>Selected</small>
+                </li>
+                <li>
+                    <div class="seat Occupied"></div>
+                    <small>Already Occupied</small>
+                </li>
+            </ul>
+
+            <div class = "seatsContainer">
+                <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat Occupied"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                </div>
+                <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat Occupied"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                </div>
+                <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                </div>
+                <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                </div>
+                <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                </div>
+                <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                </div>
+                <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                </div>
+                <label>You have selected <span id="countS" style="color:antiquewhite; background-color:brown; font-size: 30px;"></span> Seats</label>
+            </div>
+            </div>
+</div>
